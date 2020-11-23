@@ -7,10 +7,9 @@ spring:
 
 eureka:
  client:
-  # ?????????Eureka Server?
+  # 是否把该服务注册到Eureka Server上
   register-with-eureka: false
-  # ??Eureka Server????????
+  # 是否从Eureka Server拉取服务注册信息
   fetch-registry: false
   service-url:
-   # ??????
    defaultZone: http://localhost:${server.port}/eureka/
