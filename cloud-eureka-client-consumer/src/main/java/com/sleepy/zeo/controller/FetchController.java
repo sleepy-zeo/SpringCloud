@@ -1,5 +1,6 @@
 package com.sleepy.zeo.controller;
 
+import com.sleepy.zeo.service.FeignManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,13 @@ public class FetchController {
 
     private RestTemplate restTemplate;
     private RestTemplate restTemplate2;
+
+    private FeignManager feignManager;
+
+    @Autowired
+    public void setFeignManager(FeignManager feignManager) {
+        this.feignManager = feignManager;
+    }
 
     @Autowired
     @Qualifier("normal")
@@ -42,5 +50,12 @@ public class FetchController {
     public String detail2() {
         System.out.println("detail2");
         return restTemplate2.getForObject("http://eureka-client-provider/provider/info/detail", String.class);
+    }
+
+    @RequestMapping("/detail3")
+    @ResponseBody
+    public String detail3() {
+        System.out.println("detail3");
+        return feignManager.detail();
     }
 }
