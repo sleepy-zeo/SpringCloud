@@ -1,5 +1,7 @@
 server:
  port: 1124
+ servlet:
+  context-path: /server
 
 spring:
  application:
@@ -12,4 +14,4 @@ eureka:
   # 是否从Eureka Server拉取服务注册信息
   fetch-registry: false
   service-url:
-   defaultZone: http://localhost:${server.port}/eureka/
+   defaultZone: http://localhost:${server.port}/server/eureka/

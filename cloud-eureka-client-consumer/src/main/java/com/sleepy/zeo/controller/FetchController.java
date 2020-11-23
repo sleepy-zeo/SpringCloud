@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * 测试发现consumer最好要在provider全部启动完成后再启动，
+ * 否则有几率通过spring.application.name会出现访问失败的问题
+ */
 @Controller
 @RequestMapping("/fetch")
 public class FetchController {
@@ -30,13 +34,13 @@ public class FetchController {
     @ResponseBody
     public String detail() {
         System.out.println("detail");
-        return restTemplate.getForObject("http://localhost:10033/info/detail", String.class);
+        return restTemplate.getForObject("http://localhost:10033/provider/info/detail", String.class);
     }
 
     @RequestMapping("/detail2")
     @ResponseBody
     public String detail2() {
         System.out.println("detail2");
-        return restTemplate2.getForObject("http://eureka-client-provider/info/detail", String.class);
+        return restTemplate2.getForObject("http://eureka-client-provider/provider/info/detail", String.class);
     }
 }

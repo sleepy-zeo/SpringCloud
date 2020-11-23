@@ -1,5 +1,7 @@
 server:
  port: 20001
+ servlet:
+  context-path: /consumer
 
 spring:
  application:
@@ -12,4 +14,4 @@ eureka:
   register-with-eureka: true
   fetch-registry: true
   service-url:
-   defaultZone: http://localhost:1124/eureka/
+   defaultZone: http://localhost:1124/server/eureka/
