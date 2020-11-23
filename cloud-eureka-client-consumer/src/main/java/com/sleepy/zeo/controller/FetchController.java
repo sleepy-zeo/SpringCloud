@@ -30,7 +30,7 @@ public class FetchController {
     @ResponseBody
     public String detail() {
         System.out.println("detail");
-        return restTemplate.getForObject("http://localhost:10033/provider/info/detail", String.class);
+        return restTemplate.getForObject("http://localhost:43000/provider/info/detail", String.class);
     }
 
     @RequestMapping("/detail2")
