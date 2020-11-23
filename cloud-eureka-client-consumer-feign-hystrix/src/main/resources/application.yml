@@ -1,0 +1,18 @@
+server:
+ port: 40001
+ servlet:
+  context-path: /feign
+
+spring:
+ application:
+  name: eureka-client-consumer-feign
+
+eureka:
+ instance:
+  instance-id: ${spring.application.name}:localhost:${server.port}
+ client:
+  register-with-eureka: true
+  fetch-registry: true
+  service-url:
+   defaultZone: http://localhost:1124/server/eureka/
+

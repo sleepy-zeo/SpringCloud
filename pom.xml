@@ -25,6 +25,7 @@
         <module>cloud-eureka-server</module>
         <module>cloud-eureka-client-provider</module>
         <module>cloud-eureka-client-consumer</module>
+        <module>cloud-eureka-client-consumer-feign-hystrix</module>
     </modules>
 
 
