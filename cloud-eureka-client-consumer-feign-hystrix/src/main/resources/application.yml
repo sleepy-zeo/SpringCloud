@@ -1,11 +1,15 @@
 server:
- port: 44000
+ port: 4751
  servlet:
   context-path: /feign
 
 spring:
  application:
   name: eureka-client-consumer-feign
+
+feign:
+ hystrix:
+  enabled: true
 
 eureka:
  instance:

@@ -1,5 +1,6 @@
 package com.sleepy.zeo.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -28,15 +29,21 @@ public class FetchController {
 
     @RequestMapping("/detail")
     @ResponseBody
+    @HystrixCommand(fallbackMethod = "hystrixFallback")
     public String detail() {
         System.out.println("detail");
-        return restTemplate.getForObject("http://localhost:43000/provider/info/detail", String.class);
+        return restTemplate.getForObject("http://localhost:3800/provider/info/detail", String.class);
     }
 
     @RequestMapping("/detail2")
     @ResponseBody
+    @HystrixCommand(fallbackMethod = "hystrixFallback")
     public String detail2() {
         System.out.println("detail2");
         return restTemplate2.getForObject("http://eureka-client-provider/provider/info/detail", String.class);
+    }
+
+    public String hystrixFallback() {
+        return "Hystrix in ribbon.";
     }
 }

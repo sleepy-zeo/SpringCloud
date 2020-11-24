@@ -1,5 +1,5 @@
 server:
- port: 45000
+ port: 4750
  servlet:
   context-path: /consumer
 

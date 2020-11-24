@@ -1,11 +1,11 @@
 package com.sleepy.zeo.service;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@FeignClient(value = "eureka-client-provider")
+@FeignClient(value = "eureka-client-provider", fallback = FeignServiceHystrixFallback.class)
 public interface FeignService {
 
-    @RequestMapping("/provider/info/detail")
+    @GetMapping("/provider/info/detail")
     String detail();
 }
