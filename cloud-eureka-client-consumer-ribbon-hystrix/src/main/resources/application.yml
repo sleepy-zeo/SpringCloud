@@ -5,7 +5,7 @@ server:
 
 spring:
  application:
-  name: eureka-client-consumer
+  name: eureka-client-consumer-ribbon-hystrix
 
 eureka:
  instance:
@@ -15,3 +15,9 @@ eureka:
   fetch-registry: true
   service-url:
    defaultZone: http://localhost:1124/server/eureka/
+
+hystrix:
+ dashboard:
+  proxy-stream-allow-list:
+   - desktop-9la2t3c
+   - localhost

@@ -20,3 +20,8 @@ eureka:
   service-url:
    defaultZone: http://localhost:1124/server/eureka/
 
+hystrix:
+ dashboard:
+  proxy-stream-allow-list:
+   - desktop-9la2t3c
+   - localhost

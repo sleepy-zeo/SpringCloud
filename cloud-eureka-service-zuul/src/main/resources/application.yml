@@ -1,0 +1,30 @@
+server:
+ port: 1984
+ servlet:
+  context-path: /zuul
+
+spring:
+ application:
+  name: eureka-service-zuul
+
+eureka:
+ client:
+  register-with-eureka: true
+  fetch-registry: true
+  service-url:
+   defaultZone: http://localhost:1124/server/eureka/
+
+zuul:
+ # zuul????????
+ routes:
+  # key????????????
+  # ????????????????cloud-eureka-client-consumer-ribbon-hystrix?FetchController?detail3??
+  api-ribbon:
+   # http://localhost:1984/zuul/route/ribbon/consumer/helloRibbon
+   # ==> eureka-client-consumer-ribbon-hystrix/consumer/helloRibbon
+   # ==> controllers accept "/helloRibbon"
+   path: /route/ribbon/**
+   serviceId: eureka-client-consumer-ribbon-hystrix
+  api-feign:
+   path: /route/feign/**
+   serviceId: eureka-client-consumer-feign-hystrix

@@ -43,6 +43,15 @@ public class FetchController {
         return restTemplate2.getForObject("http://eureka-client-provider/provider/info/detail", String.class);
     }
 
+    // 访问zuul的一个路由接口，最终访问的是ZuulController的helloRibbon接口
+    @RequestMapping("/detail3")
+    @ResponseBody
+    @HystrixCommand(fallbackMethod = "hystrixFallback")
+    public String detail3() {
+        System.out.println("detail2");
+        return restTemplate2.getForObject("http://eureka-service-zuul/zuul/route/ribbon/consumer/helloRibbon", String.class);
+    }
+
     public String hystrixFallback() {
         return "Hystrix in ribbon.";
     }

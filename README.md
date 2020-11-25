@@ -17,10 +17,10 @@ Turbine     [ˈtɜ:rbaɪn]
 
 ```text
 server:                                             1124
+eureka-service-zuul:                                1984
 eureka-client-provider:                             3800
-eureka-client-consumer:                             4750
-eureka-client-consumer-feign:                       4751
-
+eureka-client-consumer-ribbon-hystrix:              4750
+eureka-client-consumer-feign-hystrix:               4751
 ```
 
 #### Attention

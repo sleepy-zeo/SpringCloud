@@ -24,8 +24,10 @@
     <modules>
         <module>cloud-eureka-server</module>
         <module>cloud-eureka-client-provider</module>
-        <module>cloud-eureka-client-consumer</module>
+        <module>cloud-eureka-client-consumer-ribbon-hystrix</module>
         <module>cloud-eureka-client-consumer-feign-hystrix</module>
+        <module>cloud-eureka-service-zuul</module>
+        <module>cloud-config-server</module>
     </modules>
 
 
