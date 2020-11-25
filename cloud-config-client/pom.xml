@@ -9,15 +9,15 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>cloud-config-server</artifactId>
+    <artifactId>cloud-config-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cloud-config-server</name>
+    <name>cloud-config-client</name>
     <description>Demo project for Spring Boot</description>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
+            <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
 
         <dependency>
