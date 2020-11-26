@@ -15,10 +15,9 @@ eureka:
    defaultZone: http://localhost:1124/server/eureka/
 
 zuul:
- # zuul????????
+ # Zuul功能之一，路由
  routes:
-  # key????????????
-  # ????????????????cloud-eureka-client-consumer-ribbon-hystrix?FetchController?detail3??
+  # key随意，但是不能出现相同的key
   api-ribbon:
    # http://localhost:1984/zuul/route/ribbon/consumer/helloRibbon
    # ==> eureka-client-consumer-ribbon-hystrix/consumer/helloRibbon

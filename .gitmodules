@@ -1,0 +1,3 @@
+[submodule "spring-cloud-configs"]
+	path = spring-cloud-configs
+	url = git@github.com:sleepy-zeo/spring-cloud-configs.git

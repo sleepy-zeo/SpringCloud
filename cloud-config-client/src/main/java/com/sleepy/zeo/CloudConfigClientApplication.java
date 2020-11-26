@@ -15,13 +15,12 @@ public class CloudConfigClientApplication {
         SpringApplication.run(CloudConfigClientApplication.class, args);
     }
 
+    @Value("${server.port}")
+    private String serverPort;
 
-    @Value("${version}")
-    String version;
-
-    @GetMapping(value = "/hi")
+    @GetMapping(value = "/info")
     @ResponseBody
-    public String hi(){
-        return version;
+    public String info() {
+        return serverPort;
     }
 }

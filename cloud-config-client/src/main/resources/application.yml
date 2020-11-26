@@ -1,7 +1,13 @@
 server:
- port: 8080
+ port: 9099
 
 spring:
  application:
   name: config-client
-
+ cloud:
+  config:
+   # 远端的文件会覆盖本地的application.yml中同名属性的值
+   label: main
+   profile: dev
+   uri: http://localhost:8888/
+   name: config-client

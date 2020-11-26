@@ -22,7 +22,7 @@ eureka-client-provider:                             3800
 eureka-client-consumer-ribbon-hystrix:              4750
 eureka-client-consumer-feign-hystrix:               4751
 config-server:                                      8888(该端口值目前只能是8888)
-
+config-client:                                      9099(远端文件内如果有端口指定，会覆盖掉当前端口)
 ```
 
 #### Attention

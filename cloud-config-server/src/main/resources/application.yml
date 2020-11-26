@@ -8,14 +8,14 @@ spring:
   config:
    server:
     git:
-     # ?????git??
-     uri: https://github.com/sleepy-zeo/scc
-     # ???????
-     search-paths: sconfigs
-     # ????????(??????)
+     # 配置仓库的git地址
+     uri: https://github.com/sleepy-zeo/spring-cloud-configs
+     # 配置仓库的路径
+     search-paths: config-files
+     # 配置仓库的用户名(私有仓库必需)
      username:
-     # ???????(??????)
+     # 配置仓库的密码(私有仓库必需)
      password:
-   # ???????
-   label: master
+   # 配置仓库的分支
+   label: main
 
