@@ -29,6 +29,8 @@
         <module>cloud-eureka-service-zuul</module>
         <module>cloud-config-server</module>
         <module>cloud-config-client</module>
+        <module>cloud-bus-config-server</module>
+        <module>cloud-bus-config-client</module>
     </modules>
 
 
