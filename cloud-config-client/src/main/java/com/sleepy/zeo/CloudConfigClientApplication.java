@@ -16,11 +16,11 @@ public class CloudConfigClientApplication {
     }
 
     @Value("${server.port}")
-    private String serverPort;
+    private String info;
 
     @GetMapping(value = "/info")
     @ResponseBody
     public String info() {
-        return serverPort;
+        return info;
     }
 }
