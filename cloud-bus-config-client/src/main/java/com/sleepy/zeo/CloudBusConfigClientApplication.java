@@ -15,7 +15,7 @@ public class CloudBusConfigClientApplication {
         SpringApplication.run(CloudBusConfigClientApplication.class, args);
     }
 
-    @Value("{info}")
+    @Value("${info}")
     String info;
 
     @RequestMapping("/info")

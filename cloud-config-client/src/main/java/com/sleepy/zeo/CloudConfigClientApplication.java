@@ -15,7 +15,7 @@ public class CloudConfigClientApplication {
         SpringApplication.run(CloudConfigClientApplication.class, args);
     }
 
-    @Value("${server.port}")
+    @Value("${info}")
     private String info;
 
     @GetMapping(value = "/info")
