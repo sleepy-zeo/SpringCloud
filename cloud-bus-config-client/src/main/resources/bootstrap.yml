@@ -1,0 +1,17 @@
+# bootstrap.yml 系统级别的一些配置，参数会被application.yml中的同名参数覆盖
+# application.yml 应用级别的一些配置，参数会被config的yml文件中同名参数覆盖
+#
+# 覆盖顺序
+# 同名参数才会覆盖，config -> application -> bootstrap
+#
+
+spring:
+ cloud:
+  bus:
+   trace:
+    enabled: true
+ rabbitmq:
+  host: localhost
+  port: 5555
+  username:
+  password:
