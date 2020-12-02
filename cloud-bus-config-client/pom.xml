@@ -24,6 +24,7 @@
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
 
+        <!-- bus client添加bus-amqp -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bus-amqp</artifactId>

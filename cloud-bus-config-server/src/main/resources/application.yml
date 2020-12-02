@@ -18,3 +18,11 @@ spring:
      password:
    # 配置仓库的分支
    label: main
+
+# 配置可以访问/actuator/bus-refresh
+# rabbitmq默认localhost:5672 guest guest
+management:
+ endpoints:
+  web:
+   exposure:
+    include: bus-refresh
