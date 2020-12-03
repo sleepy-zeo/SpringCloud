@@ -24,7 +24,17 @@
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
 
-        <!-- bus client添加bus-amqp -->
+        <!-- 如果没有也不会报错，但是就不提供eureka client的功能了 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <!--
+            需要导入该配置的模块有:
+            1. 配置中心
+            2. 所有需要接收bus消息的客户端
+        -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bus-amqp</artifactId>

@@ -20,7 +20,11 @@
             <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
 
-        <!-- bus server添加bus-amqp -->
+        <!--
+            需要导入该配置的模块有:
+            1. 配置中心
+            2. 所有需要接收bus消息的客户端
+        -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bus-amqp</artifactId>

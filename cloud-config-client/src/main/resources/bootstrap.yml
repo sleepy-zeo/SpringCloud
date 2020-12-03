@@ -7,15 +7,6 @@
 #
 
 server:
- port: 9001
+ port: 9000
  servlet:
-  context-path: /bus-config
-
-# 1. 添加在配置中心
-# 2. 添加在所有需要接收消息的客户端中
-spring:
- rabbitmq:
-  host: localhost
-  port: 5672
-  username: guest
-  password: guest
+  context-path: /config

@@ -50,16 +50,3 @@ application     表示应用名称，在client中通过spring.config.name配置
 profile         表示获取指定环境下配置，默认为default，可以是任意字符串，一般约定是dev/test/pro三种
 label           默认值master
 ```
-
-##### bus
-
-```text
-bus-config-server config
-bus-config-clientX config
-
-@RefreshScope
-
-rabbitmq
-docker run -d --hostname my-rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.7.15-management
-http://localhost:15672
-```
