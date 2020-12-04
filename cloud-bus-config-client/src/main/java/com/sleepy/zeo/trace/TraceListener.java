@@ -8,6 +8,7 @@ import org.springframework.cloud.bus.event.SentApplicationEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -38,6 +39,7 @@ public class TraceListener {
         map.put("id", event.getId());
         map.put("origin", event.getOriginService());
         map.put("destination", event.getDestinationService());
+        map.put("eventCreatedTimestamp", new Date(event.getTimestamp()));
         if (log.isDebugEnabled()) {
             log.debug(map);
         }
@@ -51,6 +53,7 @@ public class TraceListener {
         map.put("id", event.getAckId());
         map.put("origin", event.getOriginService());
         map.put("destination", event.getAckDestinationService());
+        map.put("eventCreatedTimestamp", new Date(event.getTimestamp()));
         if (log.isDebugEnabled()) {
             log.debug(map);
         }

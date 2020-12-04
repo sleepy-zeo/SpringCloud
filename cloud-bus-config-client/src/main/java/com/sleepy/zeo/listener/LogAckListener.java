@@ -8,8 +8,6 @@ import org.springframework.cloud.context.refresh.ContextRefresher;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
-import java.util.Set;
-
 @Component
 public class LogAckListener implements ApplicationListener<AckRemoteApplicationEvent> {
 
@@ -24,7 +22,7 @@ public class LogAckListener implements ApplicationListener<AckRemoteApplicationE
 
     @Override
     public void onApplicationEvent(AckRemoteApplicationEvent ackRemoteApplicationEvent) {
-        Set<String> keys = this.contextRefresher.refresh();
-        log.info("Received remote ack request. Ack keys: " + keys);
+        // Set<String> keys = this.contextRefresher.refresh();
+        log.info("Received remote ack request. Ack keys: " + "");
     }
 }

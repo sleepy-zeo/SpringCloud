@@ -1,5 +1,5 @@
 #
-# bootstrap.yml 系统级别的一些配置，参数会被application.yml中的同名参数覆盖
+# bootstrap.yml 系统级别的一些配置，这些参数一般是不变的，参数会被application.yml中的同名参数覆盖
 # application.yml 应用级别的一些配置，参数会被config的yml文件中同名参数覆盖
 #
 # 覆盖顺序
@@ -7,6 +7,16 @@
 #
 
 server:
- port: 9000
  servlet:
   context-path: /config
+
+spring:
+ application:
+  name: eureka-client-config
+ cloud:
+  config:
+   # 远端的文件会覆盖本地的application.yml中同名属性的值
+   label: main
+   profile: dev
+   uri: http://localhost:8888/
+   name: config-client

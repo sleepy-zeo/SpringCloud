@@ -1,5 +1,5 @@
 #
-# bootstrap.yml 系统级别的一些配置，参数会被application.yml中的同名参数覆盖
+# bootstrap.yml 系统级别的一些配置，这些参数一般是不变的，参数会被application.yml中的同名参数覆盖
 # application.yml 应用级别的一些配置，参数会被config的yml文件中同名参数覆盖
 #
 # 覆盖顺序
@@ -7,19 +7,26 @@
 #
 
 server:
- port: 9001
  servlet:
   context-path: /bus-config
 
-# 1. 添加在配置中心
-# 2. 添加在所有需要接收消息的客户端中
 spring:
+ application:
+  name: eureka-bus-client-configs
+  # 1. 添加在配置中心
+  # 2. 添加在所有需要接收消息的客户端中
  rabbitmq:
   host: localhost
   port: 5672
   username: guest
   password: guest
  cloud:
+  config:
+   # 远端的文件会覆盖本地的application.yml中同名属性的值
+   label: main
+   profile: dev
+   uri: http://localhost:8888/
+   name: bus-config-client
   bus:
    enabled: true
    trace:

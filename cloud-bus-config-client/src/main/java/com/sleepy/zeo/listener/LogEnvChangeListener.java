@@ -8,8 +8,6 @@ import org.springframework.cloud.context.refresh.ContextRefresher;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
-import java.util.Set;
-
 @Component
 public class LogEnvChangeListener implements ApplicationListener<EnvironmentChangeRemoteApplicationEvent> {
 
@@ -24,7 +22,7 @@ public class LogEnvChangeListener implements ApplicationListener<EnvironmentChan
 
     @Override
     public void onApplicationEvent(EnvironmentChangeRemoteApplicationEvent ackRemoteApplicationEvent) {
-        Set<String> keys = this.contextRefresher.refresh();
-        log.info("Received remote env change request. Env change keys: " + keys);
+        // Set<String> keys = this.contextRefresher.refresh();
+        log.info("Received remote env change request. Env change keys: " + "");
     }
 }

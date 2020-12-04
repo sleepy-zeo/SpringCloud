@@ -8,8 +8,6 @@ import org.springframework.cloud.context.refresh.ContextRefresher;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
-import java.util.Set;
-
 @Component
 public class LogRefreshListener implements ApplicationListener<RefreshRemoteApplicationEvent> {
 
@@ -23,7 +21,7 @@ public class LogRefreshListener implements ApplicationListener<RefreshRemoteAppl
     }
 
     public void onApplicationEvent(RefreshRemoteApplicationEvent event) {
-        Set<String> keys = this.contextRefresher.refresh();
-        log.info("Received remote refresh request. Refreshed keys: " + keys);
+        // Set<String> keys = this.contextRefresher.refresh();
+        log.info("Received remote refresh request. Refreshed keys: " + "");
     }
 }
