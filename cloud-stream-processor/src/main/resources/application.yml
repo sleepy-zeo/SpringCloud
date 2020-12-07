@@ -1,1 +1,19 @@
+server:
+ port: 20047
 
+spring:
+ rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+ cloud:
+  stream:
+   bindings:
+    # 将channel名为"input"和"output"都设置成同一个topic "publish"
+    # 如果不设置，那么"input"默认topic名为"input"，"output"默认topic名为"output"
+    # topic在rabbitmq中就是exchange
+    input:
+     destination: publish
+    output:
+     destination: publish
