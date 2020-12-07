@@ -31,6 +31,7 @@
         <module>cloud-config-client</module>
         <module>cloud-bus-config-server</module>
         <module>cloud-bus-config-client</module>
+        <module>cloud-stream</module>
     </modules>
 
 

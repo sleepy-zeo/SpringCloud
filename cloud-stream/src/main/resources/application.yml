@@ -1,0 +1,17 @@
+server:
+ port: 10581
+
+spring:
+ rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+ cloud:
+  stream:
+   bindings:
+    # 将channel "input"和"output"都设置成同一个topic "publish"
+    input:
+     destination: publish
+    output:
+     destination: publish
