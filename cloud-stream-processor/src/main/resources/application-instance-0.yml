@@ -1,0 +1,90 @@
+server:
+ port: 20040
+
+spring:
+ rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+ cloud:
+  stream:
+   ### 单绑定器配置，只需要在pom.xml中引入对应绑定器的依赖即可
+   ### 多绑定器配置，配置默认绑定器
+   default-binder: rabbit-env-1
+   ### overall设置消息分区
+   # spring.cloud.stream.instance-count：该参数指定了当前消费者的总实例数量
+   # spring.cloud.stream.instance-index：该参数设置当前实例的索引号
+   instance-count: 3
+   instance-index: 0
+   bindings:
+    ### 设置topic
+    # 将通道input和通道output都设置成同一个topic "publish"
+    # 如果不设置，那么通道input的默认topic名为"input"，通道output的默认topic名为"output"
+    # 发送接收的对象实质上是topic，而不是通道
+    message_output:
+     destination: mp.message
+    message_input:
+     destination: mp.message
+    log_output:
+     ### 多绑定器配置，单独配置绑定器
+     binder: rabbit-env-2
+     destination: mp.log
+    log_input:
+     binder: rabbit-env-2
+     destination: mp.log
+    ### 设置group
+    # 为消费者设置消费组，这样绑定到该topic的所有实例同时只会有一个接收到发送到至该topic上的消息
+    # 至于是哪个实例接收到是无法确定的
+    input:
+     destination: publish
+     group: publish-group
+     ### input设置消息分区
+     # 设置consumer.partitioned=true开启消息分区
+     consumer:
+      partitioned: true
+    output:
+     destination: publish
+     ### output设置消息分区
+     # 指定了分区键的表达式规则
+     producer:
+      partition-count: 3
+      partition-key-expression: "payload.partitionId"
+      # 这里设置成固定的2，这样生产者发出的消息只会被instance-index为2的实例接收并处理
+      # partition-key-expression: "2"
+    user_output:
+     destination: mp.user
+     binder: rabbit-env-2
+    user_input:
+     destination: mp.user
+     binder: rabbit-env-2
+   ### 配置多个绑定器环境
+   # 这里配置的kafka，可能还需要在command中对kafka有额外的配置，暂时掠过
+   binders:
+    kafka-env-1:
+     type: kafka
+     environment:
+      spring:
+       kafka:
+        brokers: localhost:9092         # Kafka的消息中间件服务器
+        zk-nodes: localhost:2181        # Zookeeper的节点，如果是集群则后面加,号分隔
+        auto-create-topics: true        # 设置为false，就不会自动创建Topic
+    rabbit-env-1:
+     type: rabbit
+     environment:
+      spring:
+       rabbitmq:
+        host: 127.0.0.1
+        port: 5672
+        username: guest
+        password: guest
+    rabbit-env-2:
+     type: rabbit
+     environment:
+      spring:
+       rabbitmq:
+        host: localhost
+        port: 5672
+        username: guest
+        password: guest
+

@@ -1,4 +1,4 @@
-package com.sleepy.zeo.receiver;
+package com.sleepy.zeo.stream.receiver;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
