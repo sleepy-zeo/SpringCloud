@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.messaging.Message;
-import org.springframework.messaging.support.GenericMessage;
 import org.springframework.messaging.support.MessageBuilder;
 
 import java.util.Date;
@@ -28,6 +27,9 @@ public class SinkSender {
     }
 
     public void sendMessage2(String name, String payload, Integer index) {
-        source.output().send(new GenericMessage<>(new PartitionMessage(new Date(), name, payload, index)));
+        Message message = MessageBuilder
+                .withPayload(new PartitionMessage(new Date(), name, payload, index))
+                .build();
+        source.output().send(message);
     }
 }
