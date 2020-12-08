@@ -37,7 +37,7 @@ spring:
         password: guest
 ```
 
-#### 设置默认的binder
+#### 设置默认的绑定器
 
 ```yaml
 spring:
@@ -46,7 +46,7 @@ spring:
    default-binder: rabbit-env-1
 ```
 
-#### 设置特定的binder
+#### 设置特定的绑定器
 
 这里为input通道和output通道单独设置了rabbit-env-2环境配置
 ```yaml
@@ -56,31 +56,12 @@ spring:
    bindings:
     input:
      binder: rabbit-env-2
-     destination: mp.log
     output:
      binder: rabbit-env-2
-     destination: mp.log
 ```
 
+#### 设置topic
 
+topic相当于是将所有具有相同topic的单向管连通的主管道，每一根管道默认都有一个topic，只是如果在不设置的情况下，topic名即为管道的名称
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+???这个理解是否正确
