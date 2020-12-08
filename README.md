@@ -1,6 +1,6 @@
-## Spring Cloud
 <div align="left">
-<img src=".project/spring-cloud-logo-twinkling.svg" width=45 />This Is Spring Cloud
+<img src=".project/spring-cloud-logo-twinkling.svg" width=55 />
+This Is Spring Cloud
 </div>
 
 #### Pronunciation
