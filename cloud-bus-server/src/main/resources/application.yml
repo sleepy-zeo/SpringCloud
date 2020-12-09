@@ -14,17 +14,6 @@ management:
  endpoints:
   web:
    exposure:
-    # bus-refresh
-    # 刷新所有 curl -X POST http://localhost:8899/actuator/bus-refresh
-    # 刷新某个 curl -X POST http://localhost:8899/actuator/bus-refresh/{destination}
-    # destination = 微服务名:端口号
-
-    # bus-env
-    # ADD/UPDATE某个键值对 curl -X POST -H "Content-Type: application/json" -d '{"name":"info","value":"steven"}' http://localhost:8899/actuator/bus-env
-
-    # actuator模块本身提供了几十个endpoint
-    # bus模块提供了两个endpoint: bus-refresh bus-env
-    # 这里我们只暴露bus模块提供的这两个endpoint
+    # actuator模块提供了数个endpoint，bus模块提供了两个endpoint
+    # 这里我们只暴露bus模块提供的两个endpoint: bus-refresh bus-env
     include: bus-refresh, bus-env
-
-# TODO: 这两个endpoint的作用
