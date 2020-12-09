@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CloudStreamProcessorApplication {
+public class CloudBusServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CloudStreamProcessorApplication.class, args);
+        SpringApplication.run(CloudBusServerApplication.class, args);
     }
 
 }

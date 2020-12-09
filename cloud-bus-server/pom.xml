@@ -9,27 +9,27 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>cloud-stream-processor</artifactId>
+    <artifactId>cloud-bus-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cloud-stream-processor</name>
+    <name>cloud-bus-server</name>
     <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        <!-- spring cloud stream对RabbitMQ的支持 -->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-
-        <!-- spring cloud stream对kafka的支持 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-stream-kafka</artifactId>
+            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
         </dependency>
 
         <dependency>

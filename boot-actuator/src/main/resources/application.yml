@@ -1,0 +1,41 @@
+server:
+ port: 44400
+
+# actuator中/health status值为UP说明app是健康的，值为DOWN说明app是不健康的
+management:
+ server:
+  # management.server.address配置actuator的address
+  # management.server.port配置actuator的port
+  address: 127.0.0.1
+  port: 8899
+ # 默认情况下除了shutdown这个endpoint其它所有的endpoint都是开启的
+ # 配置management.endpoint.<endpoint-name>.enabled=false关闭该endpoint，这样浏览器中访问/<endpoint-name>将显示Not Found
+ endpoint:
+  health:
+   enabled: true
+ # spring-boot-starter-actuator提供的endpoints有一二十个，包括health info metrics env等
+ # health: 显示app的健康状态
+ # info: 显示app的基本信息
+ # metrics: 显示app的度量信息，包括缓存、内存和线程等等
+ # ...
+ endpoints:
+  web:
+   # /actuator 将替换成 /monitor
+   # base-path: /monitor
+
+   # 默认情况下只暴露了health info两个endpoint
+   # 配置management.endpoints.web.exposure.include可以暴露单个或多个endpoint
+   # 配置management.endpoints.web.exposure.exclude可以禁止暴露单个或多个endpoint
+   exposure:
+    include: "*"
+    exclude: flyway, threaddump
+
+# 配置/info的显示信息
+info:
+ app:
+  name: ${spring.application.name}
+  description: @project.description@
+  version: @project.version@
+  encoding: @project.build.sourceEncoding@
+  java:
+   version: @java.version@
