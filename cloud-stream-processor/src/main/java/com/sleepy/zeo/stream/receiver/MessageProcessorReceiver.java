@@ -1,6 +1,7 @@
 package com.sleepy.zeo.stream.receiver;
 
 import com.sleepy.zeo.stream.MessageProcessor;
+import com.sleepy.zeo.stream.message.UserMessage;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.cloud.stream.annotation.EnableBinding;
@@ -29,4 +30,10 @@ public class MessageProcessorReceiver {
     public void processLog(String message) {
         logger.info("processLog log: " + message);
     }
+
+    @StreamListener(MessageProcessor.USER_INPUT)
+    public void handleUser(UserMessage userMessage) {
+        logger.info("handleUser, userMessage: " + userMessage);
+    }
+
 }

@@ -22,29 +22,31 @@ spring:
     # 将通道input和通道output都设置成同一个topic "publish"
     # 如果不设置，那么通道input的默认topic名为"input"，通道output的默认topic名为"output"
     # 发送接收的对象实质上是topic，而不是通道
-    message_output:
-     destination: mp.message
     message_input:
-     destination: mp.message
+     destination: topic.message
+     group: group.message
+    message_output:
+     destination: topic.message
+    log_input:
+     binder: rabbit-env-2
+     destination: topic.log
+     group: group.log
     log_output:
      ### 多绑定器配置，单独配置绑定器
      binder: rabbit-env-2
-     destination: mp.log
-    log_input:
-     binder: rabbit-env-2
-     destination: mp.log
+     destination: topic.log
     ### 设置group
     # 为消费者设置消费组，这样绑定到该topic的所有实例同时只会有一个接收到发送到至该topic上的消息
     # 至于是哪个实例接收到是无法确定的
     input:
-     destination: publish
-     group: publish-group
+     destination: topic.processor
+     group: group.processor
      ### input设置消息分区
      # 设置consumer.partitioned=true开启消息分区
      consumer:
       partitioned: true
     output:
-     destination: publish
+     destination: topic.processor
      ### output设置消息分区
      # 指定了分区键的表达式规则
      producer:
@@ -52,12 +54,11 @@ spring:
       partition-key-expression: "payload.partitionId"
       # 这里设置成固定的2，这样生产者发出的消息只会被instance-index为2的实例接收并处理
       # partition-key-expression: "2"
-    user_output:
-     destination: mp.user
-     binder: rabbit-env-2
     user_input:
-     destination: mp.user
-     binder: rabbit-env-2
+     destination: topic.user
+     group: group.user
+    user_output:
+     destination: topic.user
    ### 配置多个绑定器环境
    # 这里配置的kafka，可能还需要在command中对kafka有额外的配置，暂时掠过
    binders:

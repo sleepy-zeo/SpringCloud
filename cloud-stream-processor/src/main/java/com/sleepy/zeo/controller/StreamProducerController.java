@@ -1,15 +1,11 @@
 package com.sleepy.zeo.controller;
 
-import com.sleepy.zeo.stream.MessageProcessor;
 import com.sleepy.zeo.stream.message.UserMessage;
-import com.sleepy.zeo.stream.sender.SinkSender;
-import com.sleepy.zeo.stream.sender.UserSender;
+import com.sleepy.zeo.stream.sender.MessageProcessorSender;
+import com.sleepy.zeo.stream.sender.ProcessorSender;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.stream.messaging.Source;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,63 +20,47 @@ public class StreamProducerController {
 
     private static final Log logger = LogFactory.getLog(StreamProducerController.class);
 
-    private Source source;
-    private MessageProcessor messageProcessor;
-    private SinkSender sinkSender;
-    private UserSender userSender;
+    private ProcessorSender processorSender;
+    private MessageProcessorSender messageProcessorSender;
 
     @Autowired
-    public void setSource(Source source) {
-        this.source = source;
+    public void setProcessorSender(ProcessorSender processorSender) {
+        this.processorSender = processorSender;
     }
 
     @Autowired
-    public void setMessageProcessor(MessageProcessor messageProcessor) {
-        this.messageProcessor = messageProcessor;
-    }
-
-    @Autowired
-    public void setSinkSender(SinkSender sinkSender) {
-        this.sinkSender = sinkSender;
-    }
-
-    @Autowired
-    public void setUserSender(UserSender userSender) {
-        this.userSender = userSender;
+    public void setMessageProcessorSender(MessageProcessorSender messageProcessorSender) {
+        this.messageProcessorSender = messageProcessorSender;
     }
 
     @RequestMapping("/send")
-    public void sendBySource(HttpServletRequest request, HttpServletResponse response,
-                             @RequestParam("msg") String message) throws IOException {
-        source.output().send(MessageBuilder.withPayload(message).build());
+    public void sendSource(HttpServletRequest request, HttpServletResponse response,
+                           @RequestParam("msg") String message) throws IOException {
+        processorSender.sendSource(message);
         response.getWriter().write("success");
     }
 
     @RequestMapping("/send2")
-    public void send2() {
-        Message message = MessageBuilder
-                .withPayload("welcome to sleepy zeo's world")
-                .build();
-        messageProcessor.messageOutput().send(message);
+    public void sendSource2(@RequestParam("index") int index, HttpServletResponse response) throws IOException {
+        processorSender.sendSource2("ack", "hello world", index);
+        response.getWriter().write("success");
     }
 
     @RequestMapping("/send3")
-    public void send3() {
-        sinkSender.sendMessage("hello world");
+    public void sendMessage(HttpServletResponse response) throws IOException {
+        messageProcessorSender.sendMessage("welcome to sleepy zeo's world");
+        response.getWriter().write("success");
     }
 
     @RequestMapping("/send4")
-    public void send4(@RequestParam("index") int index) {
-        sinkSender.sendMessage2("ack", "hello world", index);
+    public void sendUser(HttpServletResponse response) throws IOException {
+        messageProcessorSender.sendUser("{\"name\":\"hangge\",\"age\":100}");
+        response.getWriter().write("success");
     }
 
     @RequestMapping("/send5")
-    public void send5() {
-        userSender.sendMessage("{\"name\":\"hangge\",\"age\":100}");
-    }
-
-    @RequestMapping("/send6")
-    public void send6() {
-        userSender.sendMessage2(new UserMessage("sleepy zeo", 27));
+    public void sendUser2(HttpServletResponse response) throws IOException {
+        messageProcessorSender.sendUser(new UserMessage("sleepy zeo", 27));
+        response.getWriter().write("success");
     }
 }

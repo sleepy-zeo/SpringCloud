@@ -10,7 +10,7 @@ import org.springframework.messaging.support.MessageBuilder;
 import java.util.Date;
 
 @EnableBinding(value = Source.class)
-public class SinkSender {
+public class ProcessorSender {
 
     private Source source;
 
@@ -19,14 +19,15 @@ public class SinkSender {
         this.source = source;
     }
 
-    public void sendMessage(String payload) {
+    // partition-key-expression表明payload必须要有partitionId属性，否则报错
+    public void sendSource(String payload) {
         Message message = MessageBuilder
                 .withPayload(payload)
                 .build();
         source.output().send(message);
     }
 
-    public void sendMessage2(String name, String payload, Integer index) {
+    public void sendSource2(String name, String payload, Integer index) {
         Message message = MessageBuilder
                 .withPayload(new PartitionMessage(new Date(), name, payload, index))
                 .build();

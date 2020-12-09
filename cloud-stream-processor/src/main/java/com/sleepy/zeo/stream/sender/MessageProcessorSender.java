@@ -8,7 +8,7 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
 @EnableBinding(value = MessageProcessor.class)
-public class UserSender {
+public class MessageProcessorSender {
 
     private MessageProcessor messageProcessor;
 
@@ -17,8 +17,15 @@ public class UserSender {
         this.messageProcessor = messageProcessor;
     }
 
-    // json -> object
     public void sendMessage(String payload) {
+        Message message = MessageBuilder
+                .withPayload(payload)
+                .build();
+        this.messageProcessor.messageOutput().send(message);
+    }
+
+    // json -> object
+    public void sendUser(String payload) {
         Message message = MessageBuilder
                 .withPayload(payload)
                 .build();
@@ -26,7 +33,7 @@ public class UserSender {
     }
 
     // object -> object
-    public void sendMessage2(UserMessage userMessage) {
+    public void sendUser(UserMessage userMessage) {
         Message message = MessageBuilder
                 .withPayload(userMessage)
                 .build();
