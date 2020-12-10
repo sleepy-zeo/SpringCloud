@@ -1,0 +1,13 @@
+server:
+ port: 11320
+
+spring:
+ application:
+  name: cloud-bus-client
+ rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+
+timestamp: 2020/12/10-13:46:00

@@ -7,17 +7,30 @@
 #
 
 server:
- port: 16000
+ port: 16300
  servlet:
-  context-path: /config
+  context-path: /bus-config
 
 spring:
  application:
-  name: eureka-client-config
+  name: eureka-bus-client-configs
+  # 1. 添加在配置中心
+  # 2. 添加在所有需要接收消息的客户端中
+ rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
  cloud:
   config:
    # 远端的文件会覆盖本地的application.yml中同名属性的值
    label: main
    profile: dev
    uri: http://localhost:8888/
-   name: config-client
+   name: bus-config-client
+  bus:
+   enabled: true
+   trace:
+    enabled: true
+   ack:
+    enabled: true

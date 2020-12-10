@@ -1,7 +1,12 @@
 server:
  port: 19540
 
+
+# cloud-bus是建立在cloud-stream上的
+# 发送接收消息都要通过rabbitmq/kafka等工具
 spring:
+ application:
+  name: cloud-bus-server
  rabbitmq:
   host: 127.0.0.1
   port: 5672
@@ -17,3 +22,5 @@ management:
     # actuator模块提供了数个endpoint，bus模块提供了两个endpoint
     # 这里我们只暴露bus模块提供的两个endpoint: bus-refresh bus-env
     include: bus-refresh, bus-env
+
+info: create at 2020/12/10-11:14:00

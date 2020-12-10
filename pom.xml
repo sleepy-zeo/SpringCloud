@@ -29,10 +29,11 @@
         <module>cloud-eureka-service-zuul</module>
         <module>cloud-config-server</module>
         <module>cloud-config-client</module>
-        <module>cloud-bus-config-server</module>
-        <module>cloud-bus-config-client</module>
+        <module>cloud-config-bus-server</module>
+        <module>cloud-config-bus-client</module>
         <module>cloud-stream</module>
         <module>cloud-bus-server</module>
+        <module>cloud-bus-client</module>
         <module>boot-actuator</module>
     </modules>
 
