@@ -10,9 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Zuul功能之二，过滤
- *
- * filter只针对需要路由的url，普通的url不会过滤
+ * 过滤: filter只针对需要路由的url，普通的url不会过滤
  */
 @Component
 public class ServiceFilter extends ZuulFilter {
@@ -52,13 +50,9 @@ public class ServiceFilter extends ZuulFilter {
     public Object run() throws ZuulException {
         RequestContext requestContext = RequestContext.getCurrentContext();
         HttpServletRequest httpServletRequest = requestContext.getRequest();
-        logger.info(String.format("%s >>> %s", httpServletRequest.getMethod(), httpServletRequest.getRequestURL().toString()));
         Object accessToken = httpServletRequest.getParameter("token");
         if (accessToken == null) {
             logger.warn("error, token is empty");
-            // 是否把需要路由的请求转发给对应的server，
-            //      false   不转发自己处理
-            //      true    转发，不需要自己来处理了
             requestContext.setSendZuulResponse(false);
             requestContext.setResponseStatusCode(401);
             try {

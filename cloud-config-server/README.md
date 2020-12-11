@@ -5,7 +5,7 @@
 #### config-server
 
 server端需要添加@EnableConfigServer注解
-```text
+```properties
 # 默认config server的端口是8888
 server.port = 8888
 
@@ -24,7 +24,7 @@ spring.cloud.config.server.git.password = xxx
 1. 以下内容存放在bootstrap.yml(bootstrap.properties)中
 2. client的dependency中一定要有spring-boot-starter-web依赖
 
-```text
+```properties
 # 对应的文件是main分支的config-client-dev.yml文件
 spring.cloud.config.uri = http://localhost:8888/
 spring.cloud.config.name = config-client

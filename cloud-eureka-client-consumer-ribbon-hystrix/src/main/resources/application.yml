@@ -6,6 +6,13 @@ server:
 spring:
  application:
   name: eureka-client-consumer-ribbon-hystrix
+ resources:
+  # 配置资源路径，通过http://xxx:xxxx/consumer/xxx.png直接访问资源
+  static-locations:
+   - classpath:/static
+ thymeleaf:
+  prefix: classpath:/templates/
+  suffix: .html
 
 eureka:
  instance:
