@@ -12,7 +12,7 @@ curl -X POST http://localhost:8899/actuator/bus-refresh/{destination}
 
 1. 通过actuator模块，调用url实际上是调用了RefreshBusEndpoint的相关方法
 2. 通过RefreshBusEndpoint源码得知其实就是发送了RefreshRemoteApplicationEvent，然后由RefreshListener接收并处理
-3. 当application.yml等配置文件中的属性值改变时候，contextRefresher的refresh()就能检测到相应改变，触发@RefreshScope热加载
+3. 当application.yml配置文件中的属性值改变时候，contextRefresher的refresh()就能检测到相应改变，触发@RefreshScope热加载
 
 
 #### bus-env
